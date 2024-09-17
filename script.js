@@ -41,3 +41,42 @@ function efectoHabilidades(){
 window.onscroll = function(){
     efectoHabilidades();
 } 
+
+document.getElementById('contactoForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Previene el envío del formulario tradicional
+
+    const formData = new FormData(this);
+
+    fetch('enviar_correo.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 'success') {
+            Swal.fire({
+                icon: 'success',
+                title: '¡Enviado!',
+                text: data.message,
+                timer: 2000, // Opcional: tiempo en milisegundos antes de cerrar la alerta
+                willClose: () => {
+                    // Redirige a la misma página después de que la alerta se haya cerrado
+                    window.location.href = window.location.href;
+                }
+            });
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: data.message
+            });
+        }
+    })
+    .catch(error => {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Hubo un problema al enviar el mensaje.'
+        });
+    });
+});
