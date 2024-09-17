@@ -47,7 +47,7 @@ document.getElementById('contactoForm').addEventListener('submit', function(even
 
     const formData = new FormData(this);
 
-    fetch('enviar_correo.php', {
+    fetch('https://<tu-ngrok-url>/enviar_correo.php', { // Usa la URL de ngrok aquí
         method: 'POST',
         body: formData
     })

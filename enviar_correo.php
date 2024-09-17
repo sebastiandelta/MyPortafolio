@@ -1,5 +1,9 @@
+// enviar_correo.php
+
 <?php
-// Configuración de la base de datos
+header("Content-Type: application/json");
+
+// Configura tus credenciales de base de datos
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -10,7 +14,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 
 // Verificar conexión
 if ($conn->connect_error) {
-    die("Conexión fallida: " . $conn->connect_error);
+    die(json_encode(['status' => 'error', 'message' => 'Conexión fallida']));
 }
 
 // Obtener datos del formulario
@@ -20,15 +24,13 @@ $correo = $_POST['correo'];
 $tema = $_POST['tema'];
 $mensaje = $_POST['mensaje'];
 
-// Preparar y ejecutar la consulta
-$sql = "INSERT INTO contactos (nombre, telefono, correo, tema, mensaje)
-        VALUES ('$nombre', '$telefono', '$correo', '$tema', '$mensaje')";
+// Insertar datos en la base de datos
+$sql = "INSERT INTO contactos(nombre, telefono, correo, tema, mensaje) VALUES ('$nombre', '$telefono', '$correo', '$tema', '$mensaje')";
 
 if ($conn->query($sql) === TRUE) {
     echo json_encode(['status' => 'success', 'message' => 'Mensaje enviado correctamente']);
 } else {
-    echo json_encode(['status' => 'error', 'message' => 'Error: ' . $conn->error]);
+    echo json_encode(['status' => 'error', 'message' => 'Error al enviar el mensaje']);
 }
 
-// Cerrar conexión
 $conn->close();
