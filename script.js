@@ -27,12 +27,13 @@ function efectoHabilidades(){
         habilidades[3].classList.add("htmlycss");
         habilidades[4].classList.add("mysql");
         habilidades[5].classList.add("pruebasunitarias");
-        habilidades[6].classList.add("aws");
-        habilidades[7].classList.add("comunicacion");
-        habilidades[8].classList.add("trabajo");
-        habilidades[9].classList.add("creatividad");
-        habilidades[10].classList.add("dedicacion");
-        habilidades[11].classList.add("aprender");
+        habilidades[6].classList.add("java");
+        habilidades[7].classList.add("aws");
+        habilidades[8].classList.add("dedicacion");
+        habilidades[9].classList.add("aprender");
+        habilidades[10].classList.add("comunicacion");
+        habilidades[11].classList.add("trabajo");
+        habilidades[12].classList.add("creatividad");
     }
 }
 

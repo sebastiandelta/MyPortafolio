@@ -321,6 +321,14 @@ html{
     0%{width: 0%;}
     100%{width: 50%;}
 }
+.skills .skill .java{
+    width: 0%;
+    animation: 2s java forwards;
+}
+@keyframes java {
+    0%{width: 0%;}
+    100%{width: 40%;}
+}
 .skills .skill .aws{
     width: 0%;
     animation: 2s aws forwards;
@@ -487,6 +495,7 @@ html{
     color: #fff;
     padding: 50px 20px;
 }
+
 .portfolio .contenido-seccion{
     max-width: 1100px;
     margin: auto;
